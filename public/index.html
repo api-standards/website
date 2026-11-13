@@ -3,34 +3,152 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API Standards Conference</title>
-  <meta name="description" content="GraphQL + AsyncAPI + OpenAPI + JSON Schema. Coming soon.">
+  <title>Support API Standards</title>
+  <meta name="description" content="Fund the open standards behind modern APIs: GraphQL, AsyncAPI, OpenAPI and JSON Schema.">
   <link rel="icon" href="logo.png">
   <style>
-    :root { --bg: #fff; --fg: #1a1a1a; --muted: #666; }
+    :root {
+      --bg: #fff;
+      --fg: #1a1a1a;
+      --muted: #5c5c5c;
+      --card: #f6f6f4;
+      --border: #e2e2de;
+      --accent: #1a1a1a;
+      --accent-fg: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --fg: #f0f0f0;
+        --muted: #a8a8a8;
+        --card: #1c1c1c;
+        --border: #2e2e2e;
+        --accent: #f0f0f0;
+        --accent-fg: #121212;
+      }
+    }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
       background: var(--bg);
       color: var(--fg);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      text-align: center;
+      line-height: 1.55;
     }
-    img { width: min(320px, 70vw); height: auto; }
-    h1 { margin: 0; font-size: clamp(1.25rem, 4vw, 2rem); font-weight: 600; }
-    p { margin: 0; font-size: 1.25rem; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+    main { max-width: 960px; margin: 0 auto; padding: 3rem 1rem 4rem; }
+    header { text-align: center; margin-bottom: 3rem; }
+    header img { width: min(240px, 60vw); height: auto; }
+    .eyebrow {
+      margin: 1.5rem 0 .5rem;
+      font-size: .85rem;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 5vw, 2.75rem); line-height: 1.15; font-weight: 700; text-wrap: balance; }
+    .lede { max-width: 40rem; margin: 0 auto; font-size: 1.125rem; color: var(--muted); text-wrap: pretty; }
+    h2 { font-size: 1.25rem; margin: 0 0 1rem; }
+    section + section { margin-top: 3rem; }
+    .why { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .why div { padding: 1rem 0; border-top: 2px solid var(--fg); }
+    .why strong { display: block; margin-bottom: .25rem; }
+    .why p { margin: 0; color: var(--muted); }
+    .orgs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .org {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .org h3 { margin: 0 0 .25rem; font-size: 1.25rem; }
+    .org .home { font-size: .85rem; color: var(--muted); }
+    .org p { margin: .75rem 0 1.25rem; color: var(--muted); flex: 1; }
+    .actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .btn {
+      display: inline-block;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+    }
+    .btn.primary { background: var(--accent); color: var(--accent-fg); }
+    .btn.secondary { color: var(--fg); }
+    .btn:hover { opacity: .85; }
+    .btn:focus-visible, a:focus-visible { outline: 3px solid #4a7dff; outline-offset: 2px; }
+    a { color: inherit; }
+    footer { margin-top: 4rem; text-align: center; color: var(--muted); font-size: .9rem; }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="API Standards conference logo">
-  <h1>GraphQL + AsyncAPI + OpenAPI + JSON Schema</h1>
-  <p>Coming soon</p>
+  <main>
+    <header>
+      <img src="logo.png" alt="API Standards logo">
+      <p class="eyebrow">GraphQL + AsyncAPI + OpenAPI + JSON Schema</p>
+      <h1>Support the open standards behind every API</h1>
+      <p class="lede">
+        Billions of API calls rely on specifications maintained by small, mostly volunteer communities.
+        Becoming a member or sponsor funds the people, tooling and governance that keep them open, stable and evolving.
+      </p>
+    </header>
+
+    <section aria-labelledby="why">
+      <h2 id="why">Where your support goes</h2>
+      <div class="why">
+        <div><strong>Specification work</strong><p>Editors, working groups and the reviews that keep each spec precise and interoperable.</p></div>
+        <div><strong>Tooling &amp; test suites</strong><p>Reference implementations, validators and compliance tests the whole ecosystem builds on.</p></div>
+        <div><strong>Community &amp; events</strong><p>Documentation, mentorship and gatherings that bring new contributors in.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="orgs">
+      <h2 id="orgs">Become a member or sponsor</h2>
+      <div class="orgs">
+        <article class="org">
+          <h3>GraphQL</h3>
+          <span class="home">GraphQL Foundation · Linux Foundation</span>
+          <p>Corporate membership of the GraphQL Foundation, with fees based on company size. Free associate membership is available for eligible non-profits and open source projects.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://graphql.org/foundation/join/">Become a member</a>
+          </div>
+        </article>
+
+        <article class="org">
+          <h3>OpenAPI</h3>
+          <span class="home">OpenAPI Initiative · Linux Foundation</span>
+          <p>Corporate membership of the OpenAPI Initiative, from associate to premier tiers, giving your organization a voice in the specification's direction.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://www.openapis.org/membershipjoin">Become a member</a>
+          </div>
+        </article>
+
+        <article class="org">
+          <h3>AsyncAPI</h3>
+          <span class="home">AsyncAPI Initiative · Linux Foundation</span>
+          <p>Monthly sponsorship tiers and one-off donations through Open Collective, GitHub Sponsors or Linux Foundation Crowdfunding.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://opencollective.com/asyncapi">Sponsor</a>
+            <a class="btn secondary" href="https://www.asyncapi.com/finance">Learn more</a>
+          </div>
+        </article>
+
+        <article class="org">
+          <h3>JSON Schema</h3>
+          <span class="home">JSON Schema · OpenJS Foundation</span>
+          <p>Individual backer and organization sponsor tiers through Open Collective, with GitHub Sponsors also accepted.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://opencollective.com/json-schema">Sponsor</a>
+            <a class="btn secondary" href="https://json-schema.org/overview/sponsors">Learn more</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      API Standards Conference · Coming soon
+    </footer>
+  </main>
 </body>
 </html>
