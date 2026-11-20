@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>API Standards Square</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=block" rel="stylesheet">
+<style>
+  /* Square social-media version of rollup.html (layout D, no names / tagline / funding card).
+     1080×1080 CSS px; render at 2× for a 2160×2160 PNG. Units below are px. */
+  :root{
+    --bg: oklch(0.16 0.02 250);
+    --fg: oklch(0.96 0.01 90);
+    --muted: oklch(0.72 0.02 250);
+    --S: 1080px;
+    --pad: 84px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:var(--S);height:var(--S);background:var(--bg);overflow:hidden}
+  body{font-family:"Space Grotesk",sans-serif;color:var(--fg)}
+  .sheet{position:relative;width:var(--S);height:var(--S);overflow:hidden}
+  .grid{position:absolute;inset:0;width:var(--S);height:var(--S)}
+  .glow{position:absolute;width:1300px;height:1300px;border-radius:50%}
+  .glow.a{background:radial-gradient(closest-side,rgb(139 61 255/.42),rgb(139 61 255/.17) 55%,rgb(139 61 255/0));top:-560px;left:300px}
+  .glow.b{background:radial-gradient(closest-side,rgb(22 184 243/.26),rgb(22 184 243/.10) 55%,rgb(22 184 243/0));top:-120px;left:-860px}
+  .glow.c{background:radial-gradient(closest-side,rgb(225 0 152/.34),rgb(225 0 152/.13) 55%,rgb(225 0 152/0));top:480px;left:420px}
+
+  .col{position:absolute;top:var(--pad);left:var(--pad);right:var(--pad)}
+  h1{display:inline-block;font-weight:700;letter-spacing:-.035em;line-height:.92;white-space:nowrap}
+  .col p{margin-top:36px;font-size:34px;line-height:1.3;color:var(--muted);max-width:820px}
+
+  /* logos scattered at staggered heights, like rollup layout D */
+  .cards{position:absolute;left:var(--pad);right:var(--pad);bottom:var(--pad);height:260px}
+  .cards img{position:absolute;width:190px;height:190px;object-fit:contain}
+  .cards img:nth-child(1){left:0;top:0}
+  .cards img:nth-child(2){left:236px;top:70px}
+  .cards img:nth-child(3){left:472px;top:18px}
+  .cards img:nth-child(4){left:708px;top:70px}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="glow a"></div><div class="glow b"></div><div class="glow c"></div>
+  <svg class="grid" id="grid" viewBox="0 0 1080 1080" preserveAspectRatio="none"></svg>
+
+  <div class="col">
+    <h1 id="h1">API<br>Standards</h1>
+    <p>Meet the people writing the standards that power the world’s APIs.</p>
+  </div>
+  <div class="cards">
+    <img src="source/openapi.svg" alt="OpenAPI">
+    <img src="source/graphql.svg" alt="GraphQL">
+    <img src="source/jsonschema.svg" alt="JSON Schema">
+    <img src="source/asyncapi.svg" alt="AsyncAPI">
+  </div>
+</div>
+
+<script>
+  // Grid: 108px squares (10 per side), thin lines, slightly fading towards the bottom
+  (function(){
+    const svg=document.getElementById('grid');
+    const S=1080, step=108, sw=1.5;
+    const op=y=>(.10*(1-.45*y/S)).toFixed(4);
+    let out=`<defs><linearGradient id="vfade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${S}">`+
+      `<stop offset="0" stop-color="#fff" stop-opacity="${op(0)}"/><stop offset="1" stop-color="#fff" stop-opacity="${op(S)}"/></linearGradient></defs>`;
+    for(let x=0; x<=S; x+=step) out+=`<rect x="${x-sw/2}" y="0" width="${sw}" height="${S}" fill="url(#vfade)"/>`;
+    for(let y=0; y<=S; y+=step) out+=`<rect x="0" y="${y-sw/2}" width="${S}" height="${sw}" fill="#fff" fill-opacity="${op(y)}"/>`;
+    svg.innerHTML=out;
+  })();
+  // Fit headline to the content width
+  document.fonts.ready.then(() => {
+    const h = document.getElementById('h1');
+    const avail = 1080 - 2*84;
+    h.style.fontSize = '100px';
+    h.style.fontSize = (100 * avail / h.getBoundingClientRect().width) + 'px';
+  });
+</script>
+</body>
+</html>

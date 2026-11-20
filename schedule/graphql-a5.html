@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GraphQL Schedule A5</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=block" rel="stylesheet">
+<style>
+  /* A5 portrait: 148×210mm trim + 3mm bleed on every side = 154×216mm page.
+     Same design system as rollup/rollup.html and public/index.html. */
+  @page { size: 154mm 216mm; margin: 0; }
+  :root{
+    --bg: oklch(0.16 0.02 250);
+    --card: oklch(0.21 0.025 250);
+    --border: oklch(1 0 0 / 0.14);
+    --fg: oklch(0.96 0.01 90);
+    --muted: oklch(0.72 0.02 250);
+    --accent: oklch(0.86 0.17 95);
+    --gql: #E10098;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --pad: 11mm;
+    --bleed: 3mm;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:154mm;height:216mm;background:var(--bg);overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-family:"Space Grotesk",sans-serif;color:var(--fg)}
+  .sheet{position:relative;width:154mm;height:216mm;overflow:hidden}
+  .page{position:absolute;left:var(--bleed);top:var(--bleed);width:148mm;height:210mm}
+  .grid{position:absolute;left:0;top:0;width:154mm;height:216mm}
+  .glow{position:absolute;border-radius:50%}
+  .glow.a{width:190mm;height:190mm;background:radial-gradient(closest-side,rgb(139 61 255/.40),rgb(139 61 255/.15) 55%,rgb(139 61 255/0));top:-95mm;left:45mm}
+  .glow.b{width:170mm;height:170mm;background:radial-gradient(closest-side,rgb(22 184 243/.22),rgb(22 184 243/.08) 55%,rgb(22 184 243/0));top:70mm;left:-115mm}
+  .glow.c{width:190mm;height:190mm;background:radial-gradient(closest-side,rgb(225 0 152/.32),rgb(225 0 152/.12) 55%,rgb(225 0 152/0));top:135mm;left:55mm}
+
+  .content{position:absolute;inset:var(--pad);display:flex;flex-direction:column}
+
+  /* header */
+  .head{display:flex;align-items:center;gap:3.5mm}
+  .head img{width:13mm;height:14.7mm;flex:none}
+  h1{display:inline-block;font-weight:700;letter-spacing:-.035em;line-height:.9;white-space:nowrap}
+  .sub{margin-top:4.5mm;display:flex;justify-content:space-between;align-items:baseline;gap:4mm;padding-bottom:4mm;border-bottom:.3mm solid var(--border)}
+  .sub .when{font-size:14pt;font-weight:700;letter-spacing:-.015em;color:var(--accent)}
+  .sub .where{font-family:var(--mono);font-size:7.5pt;color:var(--muted);text-align:right}
+
+  /* schedule */
+  .days{margin-top:2mm;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+  .day-head{display:flex;align-items:baseline;gap:2.5mm;padding:1.2mm 0 1mm}
+  .day-head .num{font-size:16pt;font-weight:700;line-height:1;color:var(--gql)}
+  .day-head .date{font-family:var(--mono);font-size:7.5pt;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .talk{display:grid;grid-template-columns:20mm 1fr;gap:3mm;padding:1.8mm 0;border-top:.25mm solid var(--border)}
+  .talk time{font-family:var(--mono);font-size:7.8pt;font-weight:600;color:var(--fg);padding-top:.5mm;white-space:nowrap}
+  .talk .title{font-size:10pt;font-weight:600;line-height:1.18;letter-spacing:-.005em}
+  .who{margin-top:1.2mm;display:flex;align-items:center;gap:2mm;font-size:7.8pt;color:var(--muted);line-height:1.25}
+  .who b{font-weight:600;color:var(--fg)}
+  .avatars{display:inline-flex;flex:none}
+  .avatars img{width:5.8mm;height:5.8mm;border-radius:50%;object-fit:cover;border:.5mm solid var(--bg);background:var(--card)}
+  .avatars img + img{margin-left:-1.6mm}
+
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="glow a"></div><div class="glow b"></div><div class="glow c"></div>
+  <svg class="grid" id="grid" viewBox="0 0 1540 2160" preserveAspectRatio="none"></svg>
+  <div class="page">
+    <div class="content">
+      <div class="head">
+        <img src="../rollup/source/graphql.svg" alt="GraphQL">
+        <h1 id="h1">GraphQL talks</h1>
+      </div>
+      <div class="sub">
+        <span class="when">Paris, December 1–3</span>
+        <span class="where">FOST · CNIT Forest<br>Room Aubépine 5</span>
+      </div>
+
+      <div class="days">
+        <section>
+          <div class="day-head"><span class="num">01</span><span class="date">Tue · December 1</span></div>
+          <div class="talk"><time>11:30–11:55</time><div>
+            <p class="title">GraphQL Variables Meet JSON Schema: The New Pitfall When AI Agents Call Your API</p>
+            <p class="who"><span class="avatars"><img src="speakers/camille-lawrence.png"></span><span><b>Camille Lawrence</b> · Apollo GraphQL</span></p>
+          </div></div>
+          <div class="talk"><time>14:30–14:55</time><div>
+            <p class="title">One to many without breaking anyone: evolving a GraphQL schema with many consumers</p>
+            <p class="who"><span class="avatars"><img src="speakers/gabriela-colombo.jpg"></span><span><b>Gabriela Colombo</b> · Swapcard</span></p>
+          </div></div>
+        </section>
+
+        <section>
+          <div class="day-head"><span class="num">02</span><span class="date">Wed · December 2</span></div>
+          <div class="talk"><time>11:20–11:45</time><div>
+            <p class="title">Explaining GraphQL Federation to my non-technical wife</p>
+            <p class="who"><span class="avatars"><img src="speakers/david-stutt.jpg"></span><span><b>David Stutt</b> · WunderGraph</span></p>
+          </div></div>
+          <div class="talk"><time>16:30–16:55</time><div>
+            <p class="title">GraphQL as the Execution Layer for AI Agents</p>
+            <p class="who"><span class="avatars"><img src="speakers/pascal-senn.png"></span><span><b>Pascal Senn</b> · ChilliCream</span></p>
+          </div></div>
+        </section>
+
+        <section>
+          <div class="day-head"><span class="num">03</span><span class="date">Thu · December 3</span></div>
+          <div class="talk"><time>09:15–09:40</time><div>
+            <p class="title">Beyond the Query: GraphQL Features That Make Frontends Simpler</p>
+            <p class="who"><span class="avatars"><img src="speakers/aurelien-david.jpg"></span><span><b>Aurélien David</b> · Pennylane</span></p>
+          </div></div>
+          <div class="talk"><time>10:15–10:40</time><div>
+            <p class="title">Houston, We Have a Partial Response: GraphQL Error Handling</p>
+            <p class="who"><span class="avatars"><img src="speakers/zeljko-kozina.png"></span><span><b>Željko Kozina</b> · Chronomill</span></p>
+          </div></div>
+          <div class="talk"><time>12:00–12:25</time><div>
+            <p class="title">GraphQL with AWS AppSync: Building a Product API at HEMA</p>
+            <p class="who"><span class="avatars"><img src="speakers/ivan-jancic.jpg"><img src="speakers/bart-rijksen.jpg"></span><span><b>Ivan Jančić</b> · Brighting &amp; <b>Bart Rijksen</b> · HEMA</span></p>
+          </div></div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Grid: 14.8mm squares aligned to the trim area (10 columns), thin lines fading towards the bottom. Units: 0.1mm.
+  (function(){
+    const svg=document.getElementById('grid');
+    const W=1540, H=2160, B=30, step=148, sw=2.5;
+    const op=y=>(.09*(1-.5*y/H)).toFixed(4);
+    let out=`<defs><linearGradient id="vfade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${H}">`+
+      `<stop offset="0" stop-color="#fff" stop-opacity="${op(0)}"/><stop offset="1" stop-color="#fff" stop-opacity="${op(H)}"/></linearGradient></defs>`;
+    for(let x=B%step - step; x<=W+step; x+=step) out+=`<rect x="${x-sw/2}" y="0" width="${sw}" height="${H}" fill="url(#vfade)"/>`;
+    for(let y=B%step - step; y<=H+step; y+=step) out+=`<rect x="0" y="${y-sw/2}" width="${W}" height="${sw}" fill="#fff" fill-opacity="${op(y)}"/>`;
+    svg.innerHTML=out;
+  })();
+  // Fit the headline to the width left next to the logo
+  document.fonts.ready.then(() => {
+    const h = document.getElementById('h1');
+    const mm = 96/25.4, avail = (148 - 22 - 13 - 3.5) * mm;
+    h.style.fontSize = '20mm';
+    h.style.fontSize = (20 * avail / h.getBoundingClientRect().width) + 'mm';
+    // report overflow of the content column in the title (for render checks)
+    const c = document.querySelector('.content'), f = document.querySelector('.days');
+    document.title = 'overflow=' + ((f.getBoundingClientRect().bottom - c.getBoundingClientRect().bottom)/mm).toFixed(1) + 'mm';
+  });
+</script>
+</body>
+</html>
